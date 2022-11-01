@@ -1,0 +1,140 @@
+*{
+    box-sizing:border-box;
+
+}
+html{
+    font-family: sans-serif;
+}
+
+.tedx-root{
+    height: 2000px;
+    background: url('./img/pattern.webp')  repeat;
+}
+
+.tedx-navbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    background:rgba(0,0,0,0.7);
+    color: white;
+    transition: all 0.5s;
+}
+
+.tedx-navbar .tedx-brand-logo > img{
+    width: 300px;
+    height: auto;
+}
+
+.tedx-navbar #navbar-right{
+    list-style: none;
+}
+
+.tedx-navbar #navbar-wrapper .close-icon-wrapper{
+    width: 100%;
+    padding: 20px;
+}
+
+.tedx-navbar #navbar-wrapper .close-icon{
+    display: none;
+    width: 22px;
+    height:auto;
+}
+
+.tedx-navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    overflow: visible;
+}
+
+.navbar-right-container{
+    position:relative;
+    overflow:visible;
+}
+
+
+
+.tedx-navbar #navbar-wrapper.visible .close-icon{
+    display: block;
+    float: right;
+
+
+}
+
+.tedx-navbar #navbar-right li{
+    display: inline-block;
+    margin-left: 20px;
+    text-transform: uppercase;
+}
+
+.tedx-navbar #navbar-right li >a {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+    transition: color 0.5s;
+}
+
+.tedx-navbar #navbar-right li >a:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.navbar-icon{
+    display: none;
+}
+
+.tedx-navbar.shrink-navbar{
+    background: rgba(0,0,0,1);
+    padding-top: 0;
+    padding-bottom:0;
+}
+
+@media screen and (max-width: 2000px){
+
+
+    #navbar-wrapper{
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:-500px;
+        width: 260px;
+        background:linear-gradient(217deg, #ff0000, #000000), red;
+        transition: left 1s;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    #navbar-right{
+        display:flex;
+        flex-direction:column;
+        margin-left: 0 !important;
+        width: 100%;
+        margin-block-start: 0;
+        padding-inline-start: 0;
+        margin-top:  40px;
+        z-index: 100;
+    }
+
+
+
+    #navbar-right > li{
+        display: block;
+        padding:15px;
+        margin-left: 0 !important;
+        border-bottom: 1px solid rgba(255,255,255,0.5);
+        width: 100%;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    #navbar-wrapper.visible{
+        left: 0px;
+    }
+    .navbar-icon{
+        display: inline-block;
+    }
+}
