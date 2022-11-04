@@ -105,7 +105,7 @@ html{
         transition: left 1s;
         display: flex;
         flex-direction: column;
-
+        height: 100vh;
     }
 
     #navbar-right{
