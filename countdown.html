@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./normalizer.css">
+    <link rel="stylesheet" href="./countdown.css">
+
+</head>
+<body>
+    <div class="tedx-root">
+        <h1 class="title">
+            Launching soon
+        </h1>
+        <div class="timer">
+            <div class="watch days">
+                <div class="faces">
+                    <h1 class="face">0</h1>
+                    <h1 class="face">3</h1>
+                </div>
+                <p class="text">Days</p>
+            </div>
+            <div class="watch hours">
+                <div class="faces">
+                    <h1 class="face">7</h1>
+                    <h1 class="face">2</h1>
+                </div>
+
+                <p class="text">hours</p>
+            </div>
+            <div class="watch mins">
+                <div class="faces">
+                    <h1 class="face">5</h1>
+                    <h1 class="face">8</h1>
+                </div>
+
+                <p class="text">mins</p>
+            </div>
+            <div class="watch secs">
+                <div class="faces">
+                    <h1 class="face">0</h1>
+                    <h1 class="face">4</h1>
+                </div>
+
+                <p class="text">secs</p>
+            </div>
+        </div>
+        <div class="newsletter">
+            <p class="text">We'll let you know when we are launching</p>
+            <div class="email-container">
+                <input type="text" placeholder="Email address">
+                <button>Notify me</button>
+            </div>
+        </div>
+        <div class="socials">
+            <div class="fb"><img src="./img/fb.svg" alt=""></div>
+            <div class="twitter"><img src="./img/twitter.svg" alt=""></div>
+            <div class="linkedin"><img src="./img/linkedin.svg" alt=""></div>
+            <div class="insta"><img src="./img/insta.svg" alt=""></div>
+            <div class="medium"><img src="./img/medium.svg" alt=""></div>
+        </div>
+    </div>
+
+    <script>
+
+        function padZero(data,length=2){
+            return String(data).padStart(length,'0')
+        }
+        function calcTimeLeft(){
+            let expiredTime = new Date()
+            let current = new Date()
+            expiredTime.setDate(1);
+            expiredTime.setHours(0)
+            expiredTime.setMinutes(0)
+            expiredTime.setSeconds(0)
+            expiredTime.setMonth(11)
+            let difference = expiredTime - current;
+            difference = difference /1000; // total seconds
+            let days, hours, min, sec;
+            const SEC_IN_A_DAY = 86400;
+            const SEC_IN_AN_HOUR = 3600;
+            const SEC_IN_A_MIN = 60;
+            days = Math.floor( difference / SEC_IN_A_DAY);
+            hours = Math.floor((difference - days*SEC_IN_A_DAY)/SEC_IN_AN_HOUR);
+            min = Math.floor((difference - days*SEC_IN_A_DAY - hours*SEC_IN_AN_HOUR)/SEC_IN_A_MIN);
+            sec = difference%60
+
+            return {
+             days: padZero(days),
+                hours:padZero(hours),
+                min: padZero(min),
+                sec: padZero(sec)
+            }
+
+        }
+
+        function setTimer(time){
+            const watchFaces = document.querySelectorAll('.timer .face')
+
+            const timeString = "".concat(time.days,time.hours,time.min,time.sec)
+
+            const timeStringLength = timeString.length
+            if(timeStringLength !== watchFaces.length){
+                // throw error
+                return
+            }
+
+            watchFaces.forEach((time, index) => {
+                watchFaces[index].textContent = timeString[index];
+            })
+
+
+        }
+
+        setInterval(function(){
+           const time =  calcTimeLeft();
+
+           setTimer(time);
+
+
+        },1000)
+
+
+    </script>
+</body>
+</html>

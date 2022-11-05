@@ -1,0 +1,116 @@
+*{
+    box-sizing:border-box;
+
+}
+html{
+    font-family: Poppins, sans-serif;
+    color: white;
+}
+
+@font-face{
+    font-family: 'Digital';
+    src: url("./img/digital-7.ttf");
+}
+
+textarea, input, button { outline: none; border: 0; }
+
+.tedx-root{
+    height: 100vh;
+    width: 100vw;
+    background: url('./img/launching.svg') no-repeat center ;
+    background-size: cover;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tedx-root .title{
+    font-size: 96px;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.tedx-root .timer{
+    display: flex;
+    justify-content: space-between;
+    font-family: Digital;
+}
+
+.tedx-root .timer .watch:not(:nth-child(1)){
+    margin-left: 40px;
+}
+
+.tedx-root .timer .watch .faces{
+    display: flex;
+    font-size: 60px;
+}
+
+
+.tedx-root .timer .watch .face{
+    /*border: 1px solid rgba(255,255,255,0.2);*/
+    border-radius: 5px;
+    width: 80px;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255, 255, 255, 0.1) 100%);
+
+}
+.tedx-root .timer .watch .face:nth-child(1){
+    margin-right: 10px;
+
+}
+
+.tedx-root .timer .watch .text{
+    text-transform: uppercase;
+    display: block;
+    text-align:center;
+    margin-top: 0;
+    font-family: sans-serif;
+    font-size: 28px;
+}
+
+.tedx-root .email-container{
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 55px;
+    text-align: center;
+}
+
+.tedx-root .email-container button,
+.tedx-root .email-container input{
+    height: 100%;
+    font-size: 1.2rem;
+
+}
+
+.tedx-root .newsletter{
+    margin: 60px 0 30px 0;
+}
+
+.tedx-root .newsletter .text{
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.tedx-root .email-container input{
+    padding-left: 10px;
+}
+
+.tedx-root .email-container button{
+    color: white;
+    background: #31B8D6;
+    padding:  0 27px;
+    height: 110%;
+
+}
+
+.tedx-root .socials{
+    display: flex;
+    margin-top: 50px;
+}
+
+.tedx-root .socials div{
+    padding: 0 20px;
+}
