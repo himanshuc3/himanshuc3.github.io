@@ -136,6 +136,14 @@ textarea, input, button { outline: none; border: 0; }
     display: flex;
     margin-top: 50px;
 }
+.tedx-root .socials img{
+    transition: all 0.5s;
+
+}
+
+.tedx-root .socials img:hover{
+    transform: scale(1.2);
+}
 
 .tedx-root .socials .medium img{
     position:relative;
@@ -182,7 +190,12 @@ textarea, input, button { outline: none; border: 0; }
 #toast #img img{
     width: 30px;
     height: 30px;
+
 }
+#toast #img a:hover img{
+    transform: scale(1.5);
+}
+
 #toast #desc{
     color: #fff;
     padding: 16px;
