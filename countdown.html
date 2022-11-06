@@ -31,7 +31,6 @@
                     <h1 class="face">-</h1>
                     <h1 class="face">-</h1>
                 </div>
-
                 <p class="text">hours</p>
             </div>
             <div class="watch mins">
@@ -54,16 +53,20 @@
         <div class="newsletter">
             <p class="text">We'll let you know when we are launching</p>
             <div class="email-container">
-                <input type="text" placeholder="Email address">
-                <button>Notify me</button>
+                <input type="email" placeholder="Email address" id="email">
+                <button onclick="onSendEmail()">Notify me</button>
             </div>
         </div>
         <div class="socials">
-            <div class="fb"><a href=""><img src="./img/fb.svg" alt=""></a></div>
-            <div class="twitter"><a href=""><img src="./img/twitter.svg" alt=""></a></div>
-            <div class="linkedin"><a href=""><img src="./img/linkedin.svg" alt=""></a></div>
-            <div class="insta"><a href=""><img src="./img/insta.svg" alt=""></a></div>
-            <div class="medium"><a href=""><img src="./img/medium.svg" alt=""></a></div>
+            <div class="fb"><a href="https://www.facebook.com/TEDxIITGuwahati/" target="_blank"><img src="./img/fb.svg" alt=""></a></div>
+            <div class="twitter"><a href="https://twitter.com/tedxiitg" target="_blank"><img src="./img/twitter.svg" alt=""></a></div>
+            <div class="linkedin"><a href="https://www.linkedin.com/company/tedx-iit-guwahati/" target="_blank"><img src="./img/linkedin.svg" alt=""></a></div>
+            <div class="insta"><a href="https://www.instagram.com/tedxiitguwahati/" target="_blank"><img src="./img/insta.svg" alt=""></a></div>
+            <div class="medium"><a href="https://tedxiitguwahati.medium.com/" target="_blank"><img src="./img/medium.svg" alt=""></a></div>
+        </div>
+        <div id="toast">
+            <div id="img"><img src="./img/mail.svg" alt=""></div>
+            <div id="desc"></div>
         </div>
     </div>
 
@@ -116,6 +119,51 @@
             })
 
 
+        }
+
+        function validEmail(mail)
+        {
+            return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail) ?  true:  false
+        }
+
+        function registerEmail(email){
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxsaGg8oYfq9_DsQrzWN--QutW9vYZDGwgBgXv_GHG_SwjaCxyfijVe4KTbH_-hjsXi/exec'
+            const form = new FormData()
+            form.append('Email',email)
+
+            return fetch(SCRIPT_URL, { method: 'POST', body: form})
+
+        }
+
+        function onSendEmail(){
+            const email = document.getElementById("email");
+            if(!validEmail(email.value)){
+                email.classList.add('red-error');
+            }else{
+                email.classList.remove('red-error');
+                // send email to excel
+                registerEmail(email.value)
+                    .then(() => launchToast(email.value))
+                    .then(()=> {
+                        document.getElementById('email').innerText = ''
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        alert('Error submission unsuccesfull');
+                    })
+
+            }
+        }
+
+        function launchToast(email) {
+            const toast = document.getElementById("toast")
+            toast.className = "show";
+            document.querySelector('#toast #desc').textContent = `${email} has added to notification list`
+
+            setTimeout(function(){
+                toast.className = toast.className.replace("show", "");
+                },
+                5000);
         }
 
         setInterval(function(){
