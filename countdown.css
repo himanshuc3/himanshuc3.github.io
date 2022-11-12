@@ -39,6 +39,8 @@ textarea, input, button { outline: none; border: 0; }
     font-size: 6.5rem;
     font-weight: 400;
     margin-bottom: 0;
+    margin-top: 0;
+
 }
 
 .tedx-root .timer{
