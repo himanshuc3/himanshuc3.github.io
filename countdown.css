@@ -8,11 +8,15 @@ html{
     /*overflow: hidden;*/
     height: 100vh;
     width: 100vw;
+    background: url('./img/launching.svg') no-repeat center ;
+    background-size: cover;
+
 }
 
 body{
     width: 100%;
     height: 100%;
+
 }
 
 @font-face{
@@ -25,8 +29,7 @@ textarea, input, button { outline: none; border: 0; }
 .tedx-root{
     width: 100%;
     height: 100%;
-    background: url('./img/launching.svg') no-repeat center ;
-    background-size: cover;
+
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -36,7 +39,7 @@ textarea, input, button { outline: none; border: 0; }
 }
 
 .tedx-root .title{
-    font-size: 6.5rem;
+    font-size: 5.3rem;
     font-weight: 400;
     margin-bottom: 0;
     margin-top: 0;
@@ -111,13 +114,12 @@ textarea, input, button { outline: none; border: 0; }
 .tedx-root .email-container input{
     padding-left: 10px;
     border-radius: 10px 3px 3px 10px;
-    position: relative;
-    flex: 2;
+    flex: 2 1 auto;
 }
 
 .tedx-root .email-container button{
     color: white;
-    flex: 1;
+    flex: 1 0 auto;
     background: rgba(49, 184, 214, 1);
     padding:  0 27px;
     height: 110%;
@@ -138,6 +140,7 @@ textarea, input, button { outline: none; border: 0; }
 .tedx-root .socials{
     display: flex;
     margin-top: 50px;
+    padding-bottom: 20px;
 }
 .tedx-root .socials img{
     transition: all 0.5s;
@@ -262,15 +265,37 @@ textarea, input, button { outline: none; border: 0; }
     to {top: -150px; opacity: 0;}
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1500px){
+    html{
+        font-size: 0.65rem;
+    }
+    .tedx-root .timer .watch .text{
+        margin-top: -20px;
+    }
+    .tedx-root .timer .watch .face{
+        padding: 10px 0;
+    }
+    .tedx-root .newsletter{
+        margin: 40px 0 20px 0;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
     html{
         font-size: 0.6rem;
     }
     .newsletter{
-        width: 60%;
+        width: 40%;
+    }
+    .tedx-root .email-container button,
+    .tedx-root .email-container input{
+        font-size: 1.4rem;
     }
     .tedx-root .timer .watch .text{
         margin-top: -20px;
+    }
+    .tedx-root .timer .watch .face{
+        padding: 10px 0;
     }
 }
 
@@ -278,6 +303,11 @@ textarea, input, button { outline: none; border: 0; }
 
     .newsletter{
         width: 80%;
+    }
+    .email-container{
+        width: 100%;
+    }
+    .tedx-root .email-container button{
     }
     .tedx-root .newsletter .text{
         font-size: 2rem;
@@ -296,15 +326,19 @@ textarea, input, button { outline: none; border: 0; }
 
 }
 
-@media only screen and (device-width: 850px){
-    html{
-        font-size: 0.3rem;
+@media only screen and (max-width: 600px){
+    .tedx-root .title {
+        font-size: 10vw;
     }
+    .tedx-root .timer .watch .faces {
+        font-size: 3vw;
+    }
+    .tedx-root .timer .watch .face{
+        width: 30px;
+    }
+    .tedx-root .timer .watch .face{
+        padding: 0;
+    }
+
+
 }
-/*@media only screen and (max-width: 650px){*/
-/*    html{*/
-/*        font-size: 0.3rem;*/
-/*    }*/
-
-
-/*}*/
